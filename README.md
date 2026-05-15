@@ -47,14 +47,19 @@ This repository includes `render.yaml` for Render deployment:
 ### Render setup
 
 1. Create a Render account and connect this GitHub repository.
-2. Create a new `web_service` using the `visitor-registration-backend` service in `render.yaml`.
+2. Create or update the Render backend service using the `visitor-registration-via-voice` service in `render.yaml`.
 3. Add the required backend environment variables in Render:
    - `MONGODB_URI`
    - `CRM_ENDPOINT`
    - `PORT` (optional)
-4. Create a new `static_site` using `visitor-registration-frontend` and set:
+4. Create or update the frontend static site using `visitor-registration-frontend` and set:
    - `VITE_API_BASE` to the backend URL
 5. Deploy both services and verify the frontend can reach the backend.
+
+#### Existing Render service details
+
+- Service URL: `https://visitor-registration-via-voice.onrender.com`
+- Service ID: `srv-d83gj9lckfvc73bkr7fg`
 
 If you use a Render internal service hostname, set `VITE_API_BASE` accordingly.
 
