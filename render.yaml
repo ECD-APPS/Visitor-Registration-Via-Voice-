@@ -1,0 +1,27 @@
+services:
+  - type: web_service
+    name: visitor-registration-via-voice
+    id: srv-d83gj9lckfvc73bkr7fg
+    env: node
+    branch: render-mongodb-deploy
+    buildCommand: "cd backend && npm ci"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: CRM_ENDPOINT
+        sync: false
+      - key: PORT
+        value: "4000"
+    plan: starter
+
+  - type: static_site
+    name: visitor-registration-frontend
+    env: static
+    branch: render-mongodb-deploy
+    buildCommand: "cd frontend && npm ci && npm run build"
+    publishPath: "frontend/dist"
+    envVars:
+      - key: VITE_API_BASE
+        value: "https://visitor-registration-via-voice.onrender.com"
+    plan: starter
